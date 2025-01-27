@@ -1,0 +1,26 @@
+{
+    "name": "frappe_code_editor",
+    "type": "module",
+    "version": "0.0.1",
+    "description": "",
+    "author": "",
+    "license": "MIT",
+    "keywords": [],
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@antfu/eslint-config": "^4.1.0",
+        "@stylistic/eslint-plugin": "^3.0.0",
+        "chokidar": "^4.0.3",
+        "dotenv": "^16.4.7",
+        "eslint": "^9.19.0",
+        "fast-glob": "^3.3.3",
+        "lodash": "^4.17.21",
+        "mri": "^1.2.0",
+        "ofetch": "^1.4.1",
+        "sass": "^1.83.4",
+        "tailwindcss": "^4.0.0"
+    }
+}
