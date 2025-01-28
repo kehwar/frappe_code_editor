@@ -135,6 +135,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-
+scripts/*
 *.output.css
 *.output.scss
