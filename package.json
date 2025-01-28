@@ -8,7 +8,9 @@
     "keywords": [],
     "main": "index.js",
     "scripts": {
-        "editor": "node ."
+        "editor": "node .",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
     },
     "dependencies": {
         "@antfu/eslint-config": "^4.1.0",
