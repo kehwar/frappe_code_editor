@@ -181,6 +181,9 @@ async function processFile(filepath, connectionParams) {
         return
     const codeBlocks = getCodeBlocks(content)
     for (const codeBlock of codeBlocks) {
+        if (codeBlock.args.skip) {
+            continue
+        }
         if (codeBlock.args.doctype)
             await processCodeBlock(codeBlock, connectionParams)
         if (codeBlock.args.console)
