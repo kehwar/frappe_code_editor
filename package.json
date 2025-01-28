@@ -8,7 +8,7 @@
     "keywords": [],
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "editor": "node ."
     },
     "dependencies": {
         "@antfu/eslint-config": "^4.1.0",
@@ -20,6 +20,7 @@
         "lodash": "^4.17.21",
         "mri": "^1.2.0",
         "ofetch": "^1.4.1",
+        "p-debounce": "^4.0.0",
         "sass": "^1.83.4",
         "tailwindcss": "^4.0.0"
     }
