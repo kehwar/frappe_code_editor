@@ -21,7 +21,7 @@ const CODE_EDITOR_HINT = 'FCE-EDITOR'
 function getCliParams() {
     const argv = mri(process.argv.slice(2))
     return {
-        pattern: argv.pattern || argv._?.[0] || '**/*.{py,sql,html,css,scss,jinja-html}',
+        pattern: argv.pattern || argv._?.[0] || '**/*.{py,js,sql,html,css,scss,jinja-html}',
         shouldWatch: argv.w || argv.watch || false,
     }
 }
@@ -157,8 +157,13 @@ async function processConsoleBlock(codeBlock, connectionParams) {
         })
         if (response._debug_messages) {
             const lines = JSON.parse(response._debug_messages)
-            for (const line of lines) {
-                console.log(line)
+            if (codeBlock.args.out) {
+                fs.writeFileSync(codeBlock.args.out, lines.join('\n'))
+            }
+            else {
+                for (const line of lines) {
+                    console.log(line)
+                }
             }
         }
         else if (response?.message?.output) {
