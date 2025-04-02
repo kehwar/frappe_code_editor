@@ -46,6 +46,12 @@ export const defaults = {
             title_field: 'title',
             extension: 'py',
             limit: 10
+        },
+        'Client Script': {
+            code_field: 'script',
+            title_field: 'title',
+            extension: 'js',
+            limit: 10
         }
     }
 }
