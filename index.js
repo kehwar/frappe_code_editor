@@ -36,7 +36,9 @@ async function main() {
                     continue
                 }
 
-                console.log(`Processing configuration in /${folderPath}`)
+                if (params.verbose) {
+                    console.log(`Processing configuration in /${folderPath}`)
+                }
 
                 // Save documents from server to local files
                 await saveToLocal(userConfig, folderPath, connectionParams, params)
