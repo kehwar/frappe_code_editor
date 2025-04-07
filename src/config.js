@@ -8,33 +8,33 @@ export const defaults = {
     extensions: {
         py: {
             transformLocal: (code) => {
-                // Uncomment any line that ends with # --localonly--
+                // Uncomment any line that ends with # editor-only
                 return code
                     .split('\n')
-                    .map(line => line.endsWith('# --localonly--') ? line.replace(/^#\s*/, '') : line)
+                    .map(line => line.endsWith('# editor-only') ? line.replace(/^#\s*/, '') : line)
                     .join('\n')
             },
             transformServer: (code) => {
-                // Comment out any line that ends with # --localonly--
+                // Comment out any line that ends with # editor-only
                 return code
                     .split('\n')
-                    .map(line => line.endsWith('# --localonly--') ? `# ${line}` : line)
+                    .map(line => line.endsWith('# editor-only') ? `# ${line}` : line)
                     .join('\n')
             }
         },
         js: {
             transformLocal: (code) => {
-                // Uncomment any line that ends with // --localonly--
+                // Uncomment any line that ends with // editor-only
                 return code
                     .split('\n')
-                    .map(line => line.endsWith('// --localonly--') ? line.replace(/^\/\/\s*/, '') : line)
+                    .map(line => line.endsWith('// editor-only') ? line.replace(/^\/\/\s*/, '') : line)
                     .join('\n')
             },
             transformServer: (code) => {
-                // Comment out any line that ends with // --localonly--
+                // Comment out any line that ends with // editor-only
                 return code
                     .split('\n')
-                    .map(line => line.endsWith('// --localonly--') ? `// ${line}` : line)
+                    .map(line => line.endsWith('// editor-only') ? `// ${line}` : line)
                     .join('\n')
             }
         }
