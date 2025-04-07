@@ -85,4 +85,54 @@ export async function updateDocument(config, name, code, connectionParams) {
     } catch (error) {
         return [error, null]
     }
-} 
+}
+
+/**
+ * Executes code in the Frappe System Console
+ * @param {Object} config The configuration object
+ * @param {string} code The code to execute
+ * @param {Object} connectionParams The connection parameters
+ * @returns {Promise<void>}
+ */
+async function executeConsoleCode(config, code, connectionParams) {
+    console.log('Running console code...')
+    console.time('Console code run')
+    console.log('')
+    const url = `api/method/frappe.desk.doctype.system_console.system_console.execute_code`
+    try {
+        const response = await ofetch(url, {
+            ...connectionParams,
+            method: 'POST',
+            body: {
+                doc: JSON.stringify({
+                    'type': config.type,
+                    'commit': config.commit ? 1 : 0,
+                    'doctype': 'System Console',
+                    'console': code,
+                }),
+            },
+        })
+        if (response._debug_messages) {
+            const lines = JSON.parse(response._debug_messages)
+            if (config.out) {
+                fs.writeFileSync(config.out, lines.join('\n'))
+            }
+            else {
+                for (const line of lines) {
+                    console.log(line)
+                }
+            }
+        }
+        else if (response?.message?.output) {
+            console.log(response.message.output)
+        }
+        else {
+            console.log('No output')
+        }
+    }
+    catch (error) {
+        console.error(error)
+    }
+    console.log('')
+    console.timeEnd('Console code run')
+}
